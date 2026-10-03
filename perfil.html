@@ -1,0 +1,268 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Mi perfil · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="perfil" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Tu espacio personal</p>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-2">Mi perfil</h1>
+        <p class="text-gray-400 text-lg">Gestiona tus datos y revisa tus reservas.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <aside class="lg:col-span-1">
+            <div class="bg-background-card border border-border rounded-xl overflow-hidden">
+              <div class="h-24 bg-gradient-to-r from-primary/40 to-primary/10"></div>
+              <div class="px-6 pb-6 -mt-12 text-center">
+                <img id="userFoto" src="" alt="" class="h-28 w-28 rounded-full object-cover border-4 border-background-card mx-auto"/>
+                <h3 id="userNombre" class="text-white font-display font-bold text-2xl mt-3">--</h3>
+                <p id="userEmail" class="text-gray-400 text-sm">--</p>
+                <p id="userMiembro" class="text-primary text-xs uppercase tracking-wider mt-2 font-semibold">Miembro desde --</p>
+              </div>
+              <div class="border-t border-border">
+                <button class="tab-btn active w-full text-left rounded-none" data-tab="datos">Datos personales</button>
+                <button class="tab-btn w-full text-left rounded-none border-t border-border" data-tab="historial">Mis reservas</button>
+                <button class="tab-btn w-full text-left rounded-none border-t border-border" data-tab="seguridad">Seguridad</button>
+              </div>
+            </div>
+
+            <div class="bg-background-card border border-border rounded-xl p-6 mt-6">
+              <h4 class="text-white font-bold mb-4">Estadísticas</h4>
+              <div class="space-y-3">
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-400 text-sm">Total reservas</span>
+                  <span id="statTotal" class="text-white font-bold text-xl">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-400 text-sm">Próximas</span>
+                  <span id="statProx" class="text-primary font-bold text-xl">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-400 text-sm">Completadas</span>
+                  <span id="statComp" class="text-blue-400 font-bold text-xl">0</span>
+                </div>
+                <div class="flex justify-between items-center">
+                  <span class="text-gray-400 text-sm">Canceladas</span>
+                  <span id="statCanc" class="text-red-400 font-bold text-xl">0</span>
+                </div>
+              </div>
+            </div>
+          </aside>
+
+          <div class="lg:col-span-2">
+            <div id="tabDatos" class="tab-content">
+              <div class="bg-background-card border border-border rounded-xl p-6">
+                <h3 class="text-2xl font-display font-bold text-white mb-2">Datos personales</h3>
+                <p class="text-gray-400 text-sm mb-6">Actualiza tu información de contacto.</p>
+                <form id="formPerfil" class="space-y-4">
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Nombre completo</label>
+                    <input type="text" id="perfilNombre" class="w-full rounded-lg px-4 py-3" required/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Email</label>
+                    <input type="email" id="perfilEmail" class="w-full rounded-lg px-4 py-3" required/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Teléfono</label>
+                    <input type="tel" id="perfilTelefono" class="w-full rounded-lg px-4 py-3"/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">URL de tu foto (opcional)</label>
+                    <input type="url" id="perfilFoto" class="w-full rounded-lg px-4 py-3" placeholder="https://..."/>
+                  </div>
+                  <button type="submit" class="btn-primary">Guardar cambios</button>
+                </form>
+              </div>
+            </div>
+
+            <div id="tabHistorial" class="tab-content hidden">
+              <div class="bg-background-card border border-border rounded-xl p-6">
+                <div class="flex flex-wrap items-center justify-between gap-3 mb-5">
+                  <div>
+                    <h3 class="text-2xl font-display font-bold text-white">Mis reservas</h3>
+                    <p class="text-gray-400 text-sm">Historial completo de tus clases.</p>
+                  </div>
+                  <a href="reserva.html" class="btn-primary text-sm">
+                    <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4"></path></svg>
+                    Nueva reserva
+                  </a>
+                </div>
+
+                <div class="flex gap-2 mb-5 overflow-x-auto">
+                  <button class="tab-btn active" data-filtro="todas">Todas</button>
+                  <button class="tab-btn" data-filtro="proximas">Próximas</button>
+                  <button class="tab-btn" data-filtro="completadas">Completadas</button>
+                  <button class="tab-btn" data-filtro="canceladas">Canceladas</button>
+                </div>
+
+                <div id="historialList" class="space-y-3"></div>
+              </div>
+            </div>
+
+            <div id="tabSeguridad" class="tab-content hidden">
+              <div class="bg-background-card border border-border rounded-xl p-6">
+                <h3 class="text-2xl font-display font-bold text-white mb-2">Seguridad</h3>
+                <p class="text-gray-400 text-sm mb-6">Cambia tu contraseña para mantener tu cuenta segura.</p>
+                <form id="formPassword" class="space-y-4">
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Contraseña actual</label>
+                    <input type="password" id="passActual" class="w-full rounded-lg px-4 py-3" required/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Nueva contraseña</label>
+                    <input type="password" id="passNueva" class="w-full rounded-lg px-4 py-3" minlength="6" required/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Confirmar nueva contraseña</label>
+                    <input type="password" id="passConfirma" class="w-full rounded-lg px-4 py-3" minlength="6" required/>
+                  </div>
+                  <button type="submit" class="btn-primary">Cambiar contraseña</button>
+                </form>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!requireAuth()) return;
+      const user = Auth.current();
+
+      document.getElementById('userFoto').src = user.foto;
+      document.getElementById('userNombre').textContent = user.nombre;
+      document.getElementById('userEmail').textContent = user.email;
+      const memberSince = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+      document.getElementById('userMiembro').textContent = 'Miembro desde ' + memberSince;
+
+      document.getElementById('perfilNombre').value = user.nombre;
+      document.getElementById('perfilEmail').value = user.email;
+      document.getElementById('perfilTelefono').value = user.telefono || '';
+      document.getElementById('perfilFoto').value = user.foto;
+
+      document.querySelectorAll('aside .tab-btn[data-tab]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('aside .tab-btn[data-tab]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          document.querySelectorAll('.tab-content').forEach(c => c.classList.add('hidden'));
+          document.getElementById('tab' + btn.dataset.tab.charAt(0).toUpperCase() + btn.dataset.tab.slice(1)).classList.remove('hidden');
+        });
+      });
+
+      document.getElementById('formPerfil').addEventListener('submit', e => {
+        e.preventDefault();
+        const data = {
+          nombre: document.getElementById('perfilNombre').value.trim(),
+          email: document.getElementById('perfilEmail').value.trim(),
+          telefono: document.getElementById('perfilTelefono').value.trim(),
+          foto: document.getElementById('perfilFoto').value.trim() || user.foto
+        };
+        if (!data.nombre || !data.email) { UI.toast('Completa los campos requeridos', 'error'); return; }
+        const res = Auth.update(user.id, data);
+        if (!res.ok) { UI.toast(res.error || 'Error al guardar', 'error'); return; }
+        UI.toast('Datos actualizados correctamente');
+        setTimeout(() => location.reload(), 800);
+      });
+
+      document.getElementById('formPassword').addEventListener('submit', e => {
+        e.preventDefault();
+        const act = document.getElementById('passActual').value;
+        const nueva = document.getElementById('passNueva').value;
+        const conf = document.getElementById('passConfirma').value;
+        if (act !== user.password) { UI.toast('La contraseña actual no es correcta', 'error'); return; }
+        if (nueva.length < 6) { UI.toast('La nueva contraseña debe tener al menos 6 caracteres', 'error'); return; }
+        if (nueva !== conf) { UI.toast('Las contraseñas no coinciden', 'error'); return; }
+        Auth.update(user.id, { password: nueva });
+        UI.toast('Contraseña actualizada');
+        e.target.reset();
+      });
+
+      const stats = Reservas.stats(user.id);
+      document.getElementById('statTotal').textContent = stats.total;
+      document.getElementById('statProx').textContent = stats.proximas;
+      document.getElementById('statComp').textContent = stats.completadas;
+      document.getElementById('statCanc').textContent = stats.canceladas;
+
+      const today = new Date().toISOString().split('T')[0];
+      let filtroActual = 'todas';
+      function renderHistorial() {
+        const list = Reservas.byUser(user.id).sort((a, b) => (b.fecha + b.hora).localeCompare(a.fecha + a.hora));
+        const filtered = list.filter(r => {
+          if (filtroActual === 'todas') return true;
+          if (filtroActual === 'proximas') return r.estado !== 'cancelada' && r.estado !== 'completada' && r.fecha >= today;
+          if (filtroActual === 'completadas') return r.estado === 'completada' || (r.estado !== 'cancelada' && r.fecha < today);
+          if (filtroActual === 'canceladas') return r.estado === 'cancelada';
+          return true;
+        });
+        const container = document.getElementById('historialList');
+        if (filtered.length === 0) {
+          container.innerHTML = `<div class="text-center py-10"><svg class="h-12 w-12 text-gray-600 mx-auto mb-3" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg><p class="text-gray-400">Sin reservas en esta categoría.</p><a href="reserva.html" class="btn-primary mt-4 text-sm">Hacer primera reserva</a></div>`;
+          return;
+        }
+        container.innerHTML = filtered.map(r => {
+          const s = UI.getServicio(r.servicioId);
+          const p = UI.getProfesional(r.profesionalId);
+          return `<a href="detalle-reserva.html?id=${r.id}" class="block bg-background-dark border border-border rounded-xl p-4 hover:border-primary transition">
+            <div class="flex flex-col md:flex-row md:items-center gap-4">
+              <img src="${s.imagen}" alt="" class="h-16 w-full md:w-20 rounded-lg object-cover"/>
+              <div class="flex-1 grid grid-cols-1 md:grid-cols-3 gap-2">
+                <div>
+                  <p class="text-white font-bold">${s.nombre}</p>
+                  <p class="text-gray-400 text-xs">${p ? 'con ' + p.nombre : ''}</p>
+                </div>
+                <div>
+                  <p class="text-xs text-gray-400 uppercase">Fecha y hora</p>
+                  <p class="text-white text-sm font-medium">${UI.formatDateShort(r.fecha)} · ${r.hora}</p>
+                </div>
+                <div class="flex items-center justify-between md:justify-end gap-3">
+                  <div class="flex flex-col gap-1">${UI.estadoBadge(r.estado)} ${UI.pagoBadge(r.pago)}</div>
+                  <span class="text-primary font-bold">${UI.formatPrice(r.precio)}</span>
+                </div>
+              </div>
+            </div>
+          </a>`;
+        }).join('');
+      }
+      renderHistorial();
+      document.querySelectorAll('[data-filtro]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-filtro]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          filtroActual = btn.dataset.filtro;
+          renderHistorial();
+        });
+      });
+    });
+  </script>
+</body>
+</html>

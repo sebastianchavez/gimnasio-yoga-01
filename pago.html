@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Pago de reserva · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="pago" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Finalizar reserva</p>
+        <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-3">Pago de la reserva</h1>
+        <p class="text-gray-400 text-lg">Completa el pago para confirmar tu lugar.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="timeline-pago mb-10 max-w-2xl mx-auto">
+          <div class="timeline-step">
+            <div class="timeline-circle done"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
+            <span class="text-xs text-gray-400">Reserva</span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-circle done"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
+            <span class="text-xs text-gray-400">Datos</span>
+          </div>
+          <div class="timeline-step">
+            <div class="timeline-circle done" style="background-color: var(--color-primary); border-color: var(--color-primary);"><svg class="h-4 w-4 text-white" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="3" d="M5 13l4 4L19 7"></path></svg></div>
+            <span class="text-xs text-white font-semibold">Pago</span>
+          </div>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8 max-w-6xl mx-auto">
+          <div class="lg:col-span-2">
+            <h2 class="text-2xl font-display font-bold text-white mb-5">Método de pago</h2>
+            <div class="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+              <label class="metodo cursor-pointer bg-background-card border-2 border-primary p-4 rounded-xl">
+                <input type="radio" name="metodo" value="tarjeta" checked class="hidden"/>
+                <svg class="h-7 w-7 text-primary mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+                <p class="text-white font-semibold text-sm">Tarjeta</p>
+              </label>
+              <label class="metodo cursor-pointer bg-background-card border-2 border-border p-4 rounded-xl hover:border-primary">
+                <input type="radio" name="metodo" value="yape" class="hidden"/>
+                <svg class="h-7 w-7 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
+                <p class="text-gray-300 font-semibold text-sm">Yape</p>
+              </label>
+              <label class="metodo cursor-pointer bg-background-card border-2 border-border p-4 rounded-xl hover:border-primary">
+                <input type="radio" name="metodo" value="transferencia" class="hidden"/>
+                <svg class="h-7 w-7 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 14v3m4-3v3m4-3v3M3 21h18M3 10h18M3 7l9-4 9 4M4 10h16v11H4V10z"></path></svg>
+                <p class="text-gray-300 font-semibold text-sm">Transferencia</p>
+              </label>
+              <label class="metodo cursor-pointer bg-background-card border-2 border-border p-4 rounded-xl hover:border-primary">
+                <input type="radio" name="metodo" value="efectivo" class="hidden"/>
+                <svg class="h-7 w-7 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17 9V7a2 2 0 00-2-2H5a2 2 0 00-2 2v6a2 2 0 002 2h2m2 4h10a2 2 0 002-2v-6a2 2 0 00-2-2H9a2 2 0 00-2 2v6a2 2 0 002 2zm7-5a2 2 0 11-4 0 2 2 0 014 0z"></path></svg>
+                <p class="text-gray-300 font-semibold text-sm">Efectivo</p>
+              </label>
+            </div>
+
+            <div id="formTarjeta" class="form-metodo bg-background-card border border-border rounded-xl p-6">
+              <h3 class="text-lg font-display font-bold text-white mb-4">Datos de tarjeta</h3>
+              <div class="space-y-4">
+                <div>
+                  <label class="block text-sm font-semibold text-gray-300 mb-1">Titular</label>
+                  <input type="text" id="tarjetaTitular" class="w-full rounded-lg px-4 py-3" placeholder="Como aparece en la tarjeta"/>
+                </div>
+                <div>
+                  <label class="block text-sm font-semibold text-gray-300 mb-1">Número de tarjeta</label>
+                  <input type="text" id="tarjetaNumero" inputmode="numeric" maxlength="19" class="w-full rounded-lg px-4 py-3 tracking-wider font-mono" placeholder="0000 0000 0000 0000"/>
+                </div>
+                <div class="grid grid-cols-2 gap-4">
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">Vencimiento</label>
+                    <input type="text" id="tarjetaVence" maxlength="5" class="w-full rounded-lg px-4 py-3 font-mono" placeholder="MM/AA"/>
+                  </div>
+                  <div>
+                    <label class="block text-sm font-semibold text-gray-300 mb-1">CVV</label>
+                    <input type="text" id="tarjetaCvv" inputmode="numeric" maxlength="4" class="w-full rounded-lg px-4 py-3 font-mono" placeholder="123"/>
+                  </div>
+                </div>
+              </div>
+            </div>
+
+            <div id="formYape" class="form-metodo hidden bg-background-card border border-border rounded-xl p-6">
+              <h3 class="text-lg font-display font-bold text-white mb-4">Pago con Yape</h3>
+              <div class="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-5 text-center">
+                <p class="text-gray-300 text-sm mb-2">Escanea el QR o yapea al número</p>
+                <p class="text-primary font-bold text-2xl">+51 987 654 321</p>
+                <p class="text-gray-400 text-xs mt-1">A nombre de ZenFit Studio SAC</p>
+              </div>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Número de operación Yape</label>
+              <input type="text" id="yapeOperacion" class="w-full rounded-lg px-4 py-3" placeholder="Ej: 901234567"/>
+              <p class="text-gray-500 text-xs mt-2">Verifica tu código de 8-10 dígitos en la app.</p>
+            </div>
+
+            <div id="formTransferencia" class="form-metodo hidden bg-background-card border border-border rounded-xl p-6">
+              <h3 class="text-lg font-display font-bold text-white mb-4">Transferencia bancaria</h3>
+              <div class="bg-background-dark border border-border rounded-lg p-4 mb-5 text-sm">
+                <p class="text-gray-400 mb-1">Banco BCP · Soles</p>
+                <p class="text-white font-mono">194-12345678-0-12</p>
+                <p class="text-gray-400 text-xs mt-1">CCI: 00219400123456780012</p>
+              </div>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Número de operación</label>
+              <input type="text" id="transferOperacion" class="w-full rounded-lg px-4 py-3" placeholder="Ej: 002345678"/>
+            </div>
+
+            <div id="formEfectivo" class="form-metodo hidden bg-background-card border border-border rounded-xl p-6">
+              <h3 class="text-lg font-display font-bold text-white mb-4">Pago en efectivo</h3>
+              <div class="bg-primary/10 border border-primary/30 rounded-lg p-4">
+                <p class="text-white font-semibold mb-1">Paga al llegar al studio</p>
+                <p class="text-gray-300 text-sm">Reserva confirmada, paga tu clase en recepción antes de ingresar. Aceptamos billetes y monedas en soles.</p>
+              </div>
+            </div>
+
+            <button id="btnConfirmarPago" class="btn-primary w-full mt-6 text-base py-4">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+              Confirmar y pagar
+            </button>
+            <p class="text-center text-gray-500 text-xs mt-3">Esta es una simulación. No se realizará ningún cargo real.</p>
+          </div>
+
+          <div class="lg:col-span-1">
+            <div class="bg-background-card border border-border rounded-xl p-6 sticky top-24">
+              <h3 class="text-lg font-display font-bold text-white mb-4">Resumen</h3>
+              <div id="resumenPago"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!requireAuth()) return;
+      const id = getQueryParam('id');
+      const reserva = id ? Reservas.byId(id) : null;
+      if (!reserva) { UI.toast('No se encontró la reserva', 'error'); setTimeout(() => location.href = 'index.html', 1000); return; }
+
+      const s = UI.getServicio(reserva.servicioId);
+      const p = UI.getProfesional(reserva.profesionalId);
+      const resumen = document.getElementById('resumenPago');
+      resumen.innerHTML = `
+        <img src="${s.imagen}" alt="" class="w-full h-32 rounded-lg object-cover mb-4"/>
+        <h4 class="text-white font-display font-bold text-xl mb-2">${s.nombre}</h4>
+        <p class="text-gray-400 text-sm mb-4">${p ? 'con ' + p.nombre : ''}</p>
+        <div class="space-y-2 text-sm border-t border-border pt-4">
+          <div class="flex justify-between"><span class="text-gray-400">Fecha</span><span class="text-white font-medium">${UI.formatDateShort(reserva.fecha)}</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">Hora</span><span class="text-white font-medium">${reserva.hora}</span></div>
+          <div class="flex justify-between"><span class="text-gray-400">Duración</span><span class="text-white font-medium">${s.duracion} min</span></div>
+        </div>
+        <div class="border-t border-border mt-4 pt-4 space-y-2">
+          <div class="flex justify-between text-sm"><span class="text-gray-400">Subtotal</span><span class="text-white">${UI.formatPrice(reserva.precio)}</span></div>
+          <div class="flex justify-between text-sm"><span class="text-gray-400">IGV incluido</span><span class="text-white">S/. 0.00</span></div>
+          <div class="flex justify-between items-center pt-3 border-t border-border">
+            <span class="text-white font-semibold">Total</span>
+            <span class="text-primary font-bold text-2xl">${UI.formatPrice(reserva.precio)}</span>
+          </div>
+        </div>`;
+
+      let metodo = 'tarjeta';
+      document.querySelectorAll('.metodo').forEach(lbl => {
+        lbl.addEventListener('click', () => {
+          document.querySelectorAll('.metodo').forEach(l => { l.classList.remove('border-primary'); l.classList.add('border-border'); });
+          lbl.classList.remove('border-border');
+          lbl.classList.add('border-primary');
+          metodo = lbl.querySelector('input').value;
+          document.querySelectorAll('.form-metodo').forEach(f => f.classList.add('hidden'));
+          document.getElementById('form' + metodo.charAt(0).toUpperCase() + metodo.slice(1)).classList.remove('hidden');
+        });
+      });
+
+      document.getElementById('tarjetaNumero').addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 16);
+        e.target.value = v.match(/.{1,4}/g)?.join(' ') || v;
+      });
+      document.getElementById('tarjetaVence').addEventListener('input', e => {
+        let v = e.target.value.replace(/\D/g, '').substring(0, 4);
+        if (v.length >= 3) v = v.substring(0, 2) + '/' + v.substring(2);
+        e.target.value = v;
+      });
+      document.getElementById('tarjetaCvv').addEventListener('input', e => {
+        e.target.value = e.target.value.replace(/\D/g, '').substring(0, 4);
+      });
+
+      function luhnValid(num) {
+        const digits = num.replace(/\s/g, '').split('').map(Number);
+        if (digits.length < 13 || digits.length > 19) return false;
+        let sum = 0, alt = false;
+        for (let i = digits.length - 1; i >= 0; i--) {
+          let d = digits[i];
+          if (alt) { d *= 2; if (d > 9) d -= 9; }
+          sum += d; alt = !alt;
+        }
+        return sum % 10 === 0;
+      }
+
+      document.getElementById('btnConfirmarPago').addEventListener('click', () => {
+        if (metodo === 'tarjeta') {
+          const num = document.getElementById('tarjetaNumero').value;
+          const vence = document.getElementById('tarjetaVence').value;
+          const cvv = document.getElementById('tarjetaCvv').value;
+          const titular = document.getElementById('tarjetaTitular').value;
+          if (!titular || titular.length < 3) { UI.toast('Ingresa el titular', 'error'); return; }
+          if (!luhnValid(num)) { UI.toast('Número de tarjeta inválido', 'error'); return; }
+          const parts = vence.split('/');
+          if (parts.length !== 2 || !parts[0] || !parts[1]) { UI.toast('Fecha inválida', 'error'); return; }
+          const mes = parseInt(parts[0]);
+          if (mes < 1 || mes > 12) { UI.toast('Mes inválido', 'error'); return; }
+          const anio = 2000 + parseInt(parts[1]);
+          const expDate = new Date(anio, mes, 0);
+          if (expDate < new Date()) { UI.toast('Tarjeta vencida', 'error'); return; }
+          if (cvv.length < 3) { UI.toast('CVV inválido', 'error'); return; }
+        } else if (metodo === 'yape') {
+          const op = document.getElementById('yapeOperacion').value.trim();
+          if (op.length < 6) { UI.toast('Ingresa el número de operación', 'error'); return; }
+        } else if (metodo === 'transferencia') {
+          const op = document.getElementById('transferOperacion').value.trim();
+          if (op.length < 6) { UI.toast('Ingresa el número de operación', 'error'); return; }
+        }
+
+        const operacion = 'OP-' + Date.now();
+        Reservas.markPaid(reserva.id, metodo);
+        const pagoInfo = { reservaId: reserva.id, metodo, operacion, total: reserva.precio, fecha: new Date().toISOString() };
+        Pagos.saveDraft(pagoInfo);
+        location.href = 'pago-confirmado.html?id=' + reserva.id;
+      });
+    });
+  </script>
+</body>
+</html>

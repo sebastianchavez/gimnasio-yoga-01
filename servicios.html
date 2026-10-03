@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Servicios · ZenFit Studio</title>
+  <meta name="description" content="Yoga, pilates, meditación y entrenamiento funcional. Conoce todos los servicios de ZenFit Studio." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+            'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+            gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+          },
+          fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="servicios" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Lo que ofrecemos</p>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-4">Nuestros servicios</h1>
+        <p class="text-gray-400 max-w-2xl text-lg">Prácticas para cuerpo y mente, guiadas por instructores certificados. Reserva cualquier clase cuando quieras.</p>
+      </div>
+    </section>
+
+    <section class="py-16">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3 mb-10 justify-center" id="filtros">
+          <button class="tab-btn active" data-cat="all">Todos</button>
+          <button class="tab-btn" data-cat="yoga">Yoga</button>
+          <button class="tab-btn" data-cat="pilates">Pilates</button>
+          <button class="tab-btn" data-cat="meditacion">Meditación</button>
+          <button class="tab-btn" data-cat="funcional">Funcional</button>
+          <button class="tab-btn" data-cat="gym">Gym</button>
+          <button class="tab-btn" data-cat="cardio">Cardio</button>
+        </div>
+        <div id="serviciosGrid" class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6"></div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-12">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Profesionales</p>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Conoce a tu instructor</h2>
+        </div>
+        <div id="profesionalesGrid" class="grid grid-cols-2 md:grid-cols-4 gap-6"></div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">¿Listo para reservar?</h2>
+        <p class="text-gray-400 mb-8 max-w-xl mx-auto">Elige tu servicio favorito y encuentra el horario perfecto para ti.</p>
+        <a href="reserva.html" class="btn-primary">Reservar mi primera clase</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('serviciosGrid');
+      const render = (cat) => {
+        const list = cat === 'all' ? SERVICIOS : SERVICIOS.filter(s => s.categoria === cat);
+        grid.innerHTML = list.map(s => `
+          <div class="bg-background-card border border-border rounded-xl overflow-hidden card-hover" id="${s.categoria}">
+            <div class="service-img-frame"><img src="${s.imagen}" alt="${s.nombre}"/></div>
+            <div class="p-6">
+              <div class="flex items-center justify-between mb-3">
+                <span class="text-xs uppercase tracking-wider text-primary font-semibold">${s.categoria}</span>
+                <span class="text-white font-display font-bold text-xl">${UI.formatPrice(s.precio)}</span>
+              </div>
+              <h3 class="text-xl font-display font-bold text-white mb-2">${s.nombre}</h3>
+              <p class="text-gray-400 text-sm mb-4 leading-relaxed">${s.descripcion}</p>
+              <div class="flex items-center justify-between text-sm text-gray-400 mb-5">
+                <span class="flex items-center gap-1"><svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>${s.duracion} min</span>
+              </div>
+              <a href="reserva.html?servicio=${s.id}" class="btn-primary w-full text-sm">Reservar</a>
+            </div>
+          </div>`).join('');
+      };
+      render('all');
+
+      document.querySelectorAll('#filtros .tab-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('#filtros .tab-btn').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          render(btn.dataset.cat);
+        });
+      });
+
+      const pGrid = document.getElementById('profesionalesGrid');
+      pGrid.innerHTML = PROFESIONALES.map(p => `
+        <div class="bg-background-card border border-border rounded-xl p-5 text-center card-hover">
+          <img src="${p.foto}" alt="${p.nombre}" class="h-24 w-24 rounded-full object-cover mx-auto mb-3 border-2 border-primary/30"/>
+          <h4 class="text-white font-display font-bold text-lg">${p.nombre}</h4>
+          <p class="text-primary text-xs mb-2">${p.rol}</p>
+          <div class="flex items-center justify-center gap-1 text-gold text-sm">
+            <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            <span class="font-semibold">${p.rating}</span>
+          </div>
+        </div>`).join('');
+    });
+  </script>
+</body>
+</html>

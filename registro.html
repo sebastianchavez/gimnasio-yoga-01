@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Crear cuenta · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="registro" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main class="auth-container py-16">
+    <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="max-w-md mx-auto">
+        <div class="text-center mb-8 fade-in">
+          <div class="h-20 w-20 rounded-full bg-primary/15 border-2 border-primary/40 flex items-center justify-center mx-auto mb-5">
+            <svg class="h-10 w-10 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M18 9v3m0 0v3m0-3h3m-3 0h-3m-2-5a4 4 0 11-8 0 4 4 0 018 0zM3 20a6 6 0 0112 0v1H3v-1z"></path></svg>
+          </div>
+          <h1 class="text-3xl font-display font-bold text-white mb-2">Crea tu cuenta</h1>
+          <p class="text-gray-400">Y empieza a reservar tus clases hoy</p>
+        </div>
+
+        <div class="bg-background-card border border-border rounded-xl p-8">
+          <form id="registerForm" class="space-y-4">
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-1">Nombre completo</label>
+              <input type="text" id="registerNombre" required class="w-full rounded-lg px-4 py-3" placeholder="Tu nombre"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-1">Email</label>
+              <input type="email" id="registerEmail" required class="w-full rounded-lg px-4 py-3" placeholder="tu@email.com"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-1">Teléfono (opcional)</label>
+              <input type="tel" id="registerTelefono" class="w-full rounded-lg px-4 py-3" placeholder="+51 999 999 999"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-1">Contraseña</label>
+              <input type="password" id="registerPassword" required minlength="6" class="w-full rounded-lg px-4 py-3" placeholder="Mínimo 6 caracteres"/>
+              <div class="mt-1 h-1 rounded bg-background-dark overflow-hidden">
+                <div id="passStrength" class="h-full bg-red-500 transition-all" style="width: 0%"></div>
+              </div>
+              <p id="passHint" class="text-xs text-gray-500 mt-1">Usa al menos 6 caracteres, mezclando letras y números.</p>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-1">Confirmar contraseña</label>
+              <input type="password" id="registerConfirm" required minlength="6" class="w-full rounded-lg px-4 py-3" placeholder="Repite tu contraseña"/>
+            </div>
+            <label class="flex items-start gap-2 cursor-pointer mt-2">
+              <input type="checkbox" id="acceptTerms" required class="mt-0.5 rounded border-border bg-background-dark"/>
+              <span class="text-sm text-gray-300">Acepto los <a href="terminos.html" class="text-primary hover:underline" target="_blank">Términos y Condiciones</a> y la <a href="privacidad.html" class="text-primary hover:underline" target="_blank">Política de Privacidad</a>.</span>
+            </label>
+            <button type="submit" class="btn-primary w-full py-4 mt-2">Crear cuenta</button>
+          </form>
+
+          <div class="relative">
+            <div class="absolute inset-0 flex items-center"><div class="w-full border-t border-border"></div></div>
+            <div class="relative flex justify-center text-sm mt-6"><span class="px-2 bg-background-card text-gray-400">o regístrate con</span></div>
+          </div>
+          <div class="grid grid-cols-2 gap-3 mt-4">
+            <button type="button" class="btn-outline text-sm">Google</button>
+            <button type="button" class="btn-outline text-sm">Facebook</button>
+          </div>
+
+          <p class="text-center text-gray-400 text-sm mt-6">
+            ¿Ya tienes cuenta? <a href="inicio-sesion.html" class="text-primary font-semibold hover:underline">Inicia sesión</a>
+          </p>
+        </div>
+      </div>
+    </div>
+  </main>
+
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (Auth.isLogged()) { location.href = 'perfil.html'; return; }
+
+      const pass = document.getElementById('registerPassword');
+      const strength = document.getElementById('passStrength');
+      const hint = document.getElementById('passHint');
+      pass.addEventListener('input', () => {
+        const v = pass.value;
+        let s = 0;
+        if (v.length >= 6) s += 25;
+        if (v.length >= 10) s += 25;
+        if (/[A-Z]/.test(v)) s += 25;
+        if (/[0-9]/.test(v)) s += 25;
+        strength.style.width = s + '%';
+        const colors = ['bg-red-500', 'bg-orange-500', 'bg-yellow-500', 'bg-primary'];
+        strength.className = 'h-full transition-all ' + (colors[Math.floor(s / 25) - 1] || 'bg-red-500');
+        hint.textContent = s < 50 ? 'Contraseña débil' : s < 75 ? 'Contraseña aceptable' : 'Contraseña fuerte';
+      });
+
+      document.getElementById('registerForm').addEventListener('submit', e => {
+        e.preventDefault();
+        const data = {
+          nombre: document.getElementById('registerNombre').value.trim(),
+          email: document.getElementById('registerEmail').value.trim(),
+          telefono: document.getElementById('registerTelefono').value.trim(),
+          password: document.getElementById('registerPassword').value,
+        };
+        const confirm = document.getElementById('registerConfirm').value;
+        const terms = document.getElementById('acceptTerms').checked;
+        if (!data.nombre || !data.email) { UI.toast('Completa los campos requeridos', 'error'); return; }
+        if (data.password !== confirm) { UI.toast('Las contraseñas no coinciden', 'error'); return; }
+        if (!terms) { UI.toast('Debes aceptar los términos y la política', 'error'); return; }
+        const res = Auth.register(data);
+        if (!res.ok) { UI.toast(res.error, 'error'); return; }
+        Auth.login(data.email, data.password);
+        UI.toast('¡Bienvenido a ZenFit, ' + res.user.nombre.split(' ')[0] + '!');
+        setTimeout(() => location.href = 'perfil.html', 1000);
+      });
+    });
+  </script>
+</body>
+</html>

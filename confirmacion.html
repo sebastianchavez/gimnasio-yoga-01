@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reserva confirmada · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="confirmacion" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="py-16 has-top-spacing">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <div class="text-center mb-10 fade-in">
+          <div class="checkmark-circle mx-auto mb-6">
+            <svg class="h-14 w-14 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2.5" d="M5 13l4 4L19 7"></path></svg>
+          </div>
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">¡Listo!</p>
+          <h1 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Tu reserva está confirmada</h1>
+          <p class="text-gray-400 text-lg">Hemos guardado tu lugar. Ahora puedes completar el pago o revisar los detalles.</p>
+        </div>
+
+        <div id="codigoBox" class="bg-background-card border-2 border-primary/40 rounded-xl p-6 mb-6 text-center">
+          <p class="text-xs text-gray-400 uppercase tracking-wider mb-2">Código de reserva</p>
+          <p class="text-3xl font-mono font-bold text-primary tracking-wider" id="codigoReserva">--</p>
+        </div>
+
+        <div id="detalleBox" class="bg-background-card border border-border rounded-xl p-6 md:p-8 mb-6"></div>
+
+        <div class="bg-gold/10 border border-gold/30 rounded-xl p-5 mb-8">
+          <div class="flex items-start gap-3">
+            <svg class="h-6 w-6 text-gold flex-shrink-0 mt-0.5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M13 16h-1v-4h-1m1-4h.01M21 12a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            <div>
+              <p class="text-white font-semibold mb-1">Pago pendiente</p>
+              <p class="text-gray-300 text-sm">Tu lugar está reservado. Completa el pago para confirmar definitivamente tu asistencia.</p>
+            </div>
+          </div>
+        </div>
+
+        <div class="flex flex-col sm:flex-row gap-3">
+          <a id="btnPagar" href="#" class="btn-gold flex-1">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 10h18M7 15h1m4 0h1m-7 4h12a3 3 0 003-3V8a3 3 0 00-3-3H6a3 3 0 00-3 3v8a3 3 0 003 3z"></path></svg>
+            Pagar ahora
+          </a>
+          <a id="btnDetalle" href="#" class="btn-outline flex-1">
+            <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5H7a2 2 0 00-2 2v12a2 2 0 002 2h10a2 2 0 002-2V7a2 2 0 00-2-2h-2M9 5a2 2 0 002 2h2a2 2 0 002-2M9 5a2 2 0 012-2h2a2 2 0 012 2"></path></svg>
+            Ver detalle
+          </a>
+          <a href="index.html" class="btn-outline flex-1">Volver al inicio</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-3xl">
+        <h3 class="text-xl font-display font-bold text-white mb-5 text-center">Próximos pasos</h3>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-4">
+          <div class="text-center p-4">
+            <div class="h-10 w-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <span class="text-primary font-bold">1</span>
+            </div>
+            <p class="text-white font-semibold mb-1">Confirma tu pago</p>
+            <p class="text-gray-400 text-sm">Antes de las 2h previas a la clase.</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="h-10 w-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <span class="text-primary font-bold">2</span>
+            </div>
+            <p class="text-white font-semibold mb-1">Llega 10 min antes</p>
+            <p class="text-gray-400 text-sm">Te esperamos con tu mat listo.</p>
+          </div>
+          <div class="text-center p-4">
+            <div class="h-10 w-10 rounded-full bg-primary/15 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <span class="text-primary font-bold">3</span>
+            </div>
+            <p class="text-white font-semibold mb-1">Disfruta tu clase</p>
+            <p class="text-gray-400 text-sm">Respira profundo y deja fluir.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!requireAuth()) return;
+      const id = getQueryParam('id');
+      const reserva = id ? Reservas.byId(id) : null;
+      if (!reserva) {
+        const draft = Storage.get(STORAGE_KEYS.RESERVA_DRAFT);
+        if (draft && draft.reservaId) { location.href = 'confirmacion.html?id=' + draft.reservaId; return; }
+        UI.toast('No se encontró la reserva', 'error');
+        setTimeout(() => location.href = 'index.html', 1000);
+        return;
+      }
+      const s = UI.getServicio(reserva.servicioId);
+      const p = UI.getProfesional(reserva.profesionalId);
+      document.getElementById('codigoReserva').textContent = 'ZF-' + reserva.id.toUpperCase();
+      document.getElementById('detalleBox').innerHTML = `
+        <div class="flex flex-col md:flex-row gap-6">
+          <img src="${s.imagen}" alt="" class="h-28 w-28 rounded-xl object-cover"/>
+          <div class="flex-1 space-y-4">
+            <div>
+              <p class="text-xs text-gray-400 uppercase tracking-wider">Servicio</p>
+              <p class="text-white font-display font-bold text-2xl">${s.nombre}</p>
+            </div>
+            <div class="grid grid-cols-2 gap-4">
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Instructor</p>
+                <p class="text-white font-semibold">${p ? p.nombre : 'Asignado'}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Fecha</p>
+                <p class="text-white font-semibold">${UI.formatDate(reserva.fecha)}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Hora</p>
+                <p class="text-white font-semibold">${reserva.hora}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Duración</p>
+                <p class="text-white font-semibold">${s.duracion} min</p>
+              </div>
+            </div>
+            <div class="pt-3 border-t border-border flex items-center justify-between">
+              <span class="text-gray-400">Total a pagar</span>
+              <span class="text-primary font-bold text-2xl">${UI.formatPrice(reserva.precio)}</span>
+            </div>
+          </div>
+        </div>`;
+      document.getElementById('btnPagar').href = 'pago.html?id=' + reserva.id;
+      document.getElementById('btnDetalle').href = 'detalle-reserva.html?id=' + reserva.id;
+    });
+  </script>
+</body>
+</html>

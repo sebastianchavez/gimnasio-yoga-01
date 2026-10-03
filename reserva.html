@@ -1,0 +1,301 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Reservar Clase · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="reserva" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Reserva tu momento</p>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-4">Reservar clase</h1>
+        <p class="text-gray-400 text-lg">Sigue los 3 pasos para asegurar tu lugar.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 max-w-4xl">
+        <div class="step-indicator" id="stepIndicator">
+          <div class="step-dot active" data-step="1">1</div>
+          <div class="step-line"></div>
+          <div class="step-dot" data-step="2">2</div>
+          <div class="step-line"></div>
+          <div class="step-dot" data-step="3">3</div>
+        </div>
+
+        <div id="step1" class="step-panel">
+          <h2 class="text-2xl font-display font-bold text-white mb-2">Elige tu servicio</h2>
+          <p class="text-gray-400 mb-6">Selecciona la disciplina que quieres practicar.</p>
+          <div id="step1Grid" class="grid grid-cols-1 md:grid-cols-2 gap-4"></div>
+        </div>
+
+        <div id="step2" class="step-panel hidden">
+          <h2 class="text-2xl font-display font-bold text-white mb-2">Fecha y horario</h2>
+          <p class="text-gray-400 mb-6">Selecciona el día y la hora que prefieras.</p>
+          <div class="grid grid-cols-1 md:grid-cols-2 gap-6 mb-6">
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Fecha</label>
+              <input type="date" id="reservaFecha" class="w-full rounded-lg px-4 py-3"/>
+            </div>
+            <div>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Instructor</label>
+              <select id="reservaProfesional" class="w-full rounded-lg px-4 py-3"><option value="">Cualquier instructor</option></select>
+            </div>
+          </div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-300 mb-3">Horarios disponibles</label>
+            <div id="slotsContainer" class="flex flex-wrap gap-2 min-h-[80px] items-center">
+              <p class="text-gray-500">Selecciona una fecha para ver los horarios disponibles.</p>
+            </div>
+          </div>
+        </div>
+
+        <div id="step3" class="step-panel hidden">
+          <h2 class="text-2xl font-display font-bold text-white mb-2">Confirma tu reserva</h2>
+          <p class="text-gray-400 mb-6">Revisa los datos antes de continuar al pago.</p>
+          <div id="resumen" class="bg-background-card border border-border rounded-xl p-6 mb-6"></div>
+          <div>
+            <label class="block text-sm font-semibold text-gray-300 mb-2">Notas (opcional)</label>
+            <textarea id="reservaNotas" rows="3" class="w-full rounded-lg px-4 py-3" placeholder="Lesiones, preferencias, peticiones..."></textarea>
+          </div>
+        </div>
+
+        <div class="flex justify-between mt-8">
+          <button id="btnPrev" class="btn-outline hidden">
+            <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 19l-7-7 7-7"></path></svg>
+            Atrás
+          </button>
+          <div></div>
+          <button id="btnNext" class="btn-primary">Siguiente <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></button>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h3 class="text-2xl font-display font-bold text-white">Información importante</h3>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="text-center">
+            <div class="h-14 w-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Puntualidad</h4>
+            <p class="text-gray-400 text-sm">Llega 10 minutos antes para preparar tu espacio.</p>
+          </div>
+          <div class="text-center">
+            <div class="h-14 w-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M6 18L18 6M6 6l12 12"></path></svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Cancelación</h4>
+            <p class="text-gray-400 text-sm">Puedes cancelar hasta 4 horas antes sin costo.</p>
+          </div>
+          <div class="text-center">
+            <div class="h-14 w-14 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-3">
+              <svg class="h-7 w-7 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z"></path></svg>
+            </div>
+            <h4 class="text-white font-bold mb-2">Pago seguro</h4>
+            <p class="text-gray-400 text-sm">Tarjeta, Yape, transferencia o efectivo.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      if (!requireAuth()) return;
+      const draft = { paso: 1, servicioId: null, profesionalId: null, fecha: null, hora: null, notas: '' };
+      let step = 1;
+      const params = new URLSearchParams(location.search);
+      const pre = params.get('servicio');
+      if (pre) draft.servicioId = pre;
+
+      const grid = document.getElementById('step1Grid');
+      grid.innerHTML = SERVICIOS.map(s => `
+        <label class="cursor-pointer bg-background-card border-2 ${draft.servicioId === s.id ? 'border-primary' : 'border-border'} rounded-xl p-5 flex items-center gap-4 hover:border-primary transition card-hover">
+          <input type="radio" name="servicio" value="${s.id}" class="hidden" ${draft.servicioId === s.id ? 'checked' : ''}/>
+          <img src="${s.imagen}" alt="" class="h-20 w-20 rounded-lg object-cover"/>
+          <div class="flex-1">
+            <h4 class="text-white font-display font-bold text-lg">${s.nombre}</h4>
+            <p class="text-gray-400 text-sm mb-1">${s.descripcion}</p>
+            <div class="flex items-center gap-3 text-xs text-gray-400">
+              <span>${s.duracion} min</span><span>•</span><span class="text-primary font-semibold">${UI.formatPrice(s.precio)}</span>
+            </div>
+          </div>
+        </label>`).join('');
+
+      grid.querySelectorAll('label').forEach(lbl => {
+        lbl.addEventListener('click', () => {
+          grid.querySelectorAll('label').forEach(l => l.classList.remove('border-primary'));
+          grid.querySelectorAll('label').forEach(l => l.classList.add('border-border'));
+          lbl.classList.remove('border-border');
+          lbl.classList.add('border-primary');
+          draft.servicioId = lbl.querySelector('input').value;
+        });
+      });
+
+      const profSel = document.getElementById('reservaProfesional');
+      const updateProfs = () => {
+        const s = UI.getServicio(draft.servicioId);
+        const list = s ? PROFESIONALES.filter(p => p.especialidades.includes(s.id)) : PROFESIONALES;
+        profSel.innerHTML = '<option value="">Cualquier instructor</option>' + list.map(p => `<option value="${p.id}">${p.nombre}</option>`).join('');
+      };
+      updateProfs();
+
+      const fechaInput = document.getElementById('reservaFecha');
+      const today = new Date().toISOString().split('T')[0];
+      fechaInput.min = today;
+      fechaInput.addEventListener('change', updateSlots);
+
+      const slotsContainer = document.getElementById('slotsContainer');
+      function updateSlots() {
+        draft.fecha = fechaInput.value;
+        draft.profesionalId = profSel.value || null;
+        if (!draft.fecha || !draft.servicioId) { slotsContainer.innerHTML = '<p class="text-gray-500">Selecciona una fecha.</p>'; return; }
+        const dateObj = new Date(draft.fecha + 'T00:00:00');
+        const dayKey = ['domingo','lunes','martes','miercoles','jueves','viernes','sabado'][dateObj.getDay()];
+        let slots = HORARIOS_CLASES[dayKey] || [];
+        slots = slots.filter(s => s.servicio === draft.servicioId);
+        if (draft.profesionalId) slots = slots.filter(s => s.profesional === draft.profesionalId);
+        if (slots.length === 0) {
+          slotsContainer.innerHTML = '<p class="text-gray-500">No hay horarios disponibles este día. Prueba otro día.</p>';
+          return;
+        }
+        const occupied = Reservas.occupiedSlots(draft.servicioId, draft.fecha);
+        slotsContainer.innerHTML = slots.map(s => {
+          const p = PROFESIONALES.find(x => x.id === s.profesional);
+          const isOcc = occupied.includes(s.hora);
+          return `<button type="button" class="time-slot ${isOcc ? '' : ''}" data-hora="${s.hora}" data-prof="${s.profesional}" ${isOcc ? 'disabled' : ''}>
+            ${s.hora}<br><span class="text-xs opacity-75">${p ? p.nombre.split(' ')[0] : ''}</span>
+          </button>`;
+        }).join('');
+        slotsContainer.querySelectorAll('.time-slot:not(:disabled)').forEach(btn => {
+          btn.addEventListener('click', () => {
+            slotsContainer.querySelectorAll('.time-slot').forEach(b => b.classList.remove('selected'));
+            btn.classList.add('selected');
+            draft.hora = btn.dataset.hora;
+            draft.profesionalId = btn.dataset.prof;
+          });
+        });
+      }
+      profSel.addEventListener('change', updateSlots);
+
+      const resumen = document.getElementById('resumen');
+      function updateResumen() {
+        const s = UI.getServicio(draft.servicioId);
+        const p = UI.getProfesional(draft.profesionalId);
+        resumen.innerHTML = `
+          <div class="flex flex-col md:flex-row gap-6">
+            <img src="${s.imagen}" alt="" class="h-24 w-24 rounded-lg object-cover"/>
+            <div class="flex-1 grid grid-cols-2 gap-4">
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Servicio</p>
+                <p class="text-white font-bold">${s.nombre}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Duración</p>
+                <p class="text-white font-bold">${s.duracion} min</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Instructor</p>
+                <p class="text-white font-bold">${p ? p.nombre : 'Asignado'}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Fecha</p>
+                <p class="text-white font-bold">${UI.formatDate(draft.fecha)}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Hora</p>
+                <p class="text-white font-bold">${draft.hora}</p>
+              </div>
+              <div>
+                <p class="text-xs text-gray-400 uppercase tracking-wider">Total</p>
+                <p class="text-primary font-bold text-xl">${UI.formatPrice(s.precio)}</p>
+              </div>
+            </div>
+          </div>`;
+      }
+
+      const stepIndicator = document.getElementById('stepIndicator');
+      const btnPrev = document.getElementById('btnPrev');
+      const btnNext = document.getElementById('btnNext');
+
+      function gotoStep(n) {
+        step = n;
+        document.querySelectorAll('.step-panel').forEach(p => p.classList.add('hidden'));
+        document.getElementById('step' + step).classList.remove('hidden');
+        stepIndicator.querySelectorAll('.step-dot').forEach(d => {
+          const s = Number(d.dataset.step);
+          d.classList.remove('active', 'completed');
+          if (s === step) d.classList.add('active');
+          else if (s < step) d.classList.add('completed');
+        });
+        stepIndicator.querySelectorAll('.step-line').forEach((l, i) => {
+          l.classList.toggle('active', i < step - 1);
+        });
+        btnPrev.classList.toggle('hidden', step === 1);
+        if (step === 3) {
+          updateResumen();
+          btnNext.innerHTML = 'Confirmar reserva <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M5 13l4 4L19 7"></path></svg>';
+        } else {
+          btnNext.innerHTML = 'Siguiente <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg>';
+        }
+      }
+
+      btnNext.addEventListener('click', () => {
+        if (step === 1) {
+          if (!draft.servicioId) { UI.toast('Selecciona un servicio', 'error'); return; }
+          updateProfs();
+          gotoStep(2);
+        } else if (step === 2) {
+          if (!draft.fecha) { UI.toast('Selecciona una fecha', 'error'); return; }
+          if (!draft.hora) { UI.toast('Selecciona un horario', 'error'); return; }
+          gotoStep(3);
+        } else {
+          draft.notas = document.getElementById('reservaNotas').value;
+          const user = Auth.current();
+          const servicio = UI.getServicio(draft.servicioId);
+          const nueva = Reservas.create({
+            userId: user.id,
+            servicioId: draft.servicioId,
+            profesionalId: draft.profesionalId,
+            fecha: draft.fecha,
+            hora: draft.hora,
+            precio: servicio.precio,
+            notas: draft.notas
+          });
+          Storage.set(STORAGE_KEYS.RESERVA_DRAFT, { reservaId: nueva.id, ...draft });
+          location.href = 'confirmacion.html?id=' + nueva.id;
+        }
+      });
+
+      btnPrev.addEventListener('click', () => { if (step > 1) gotoStep(step - 1); });
+
+      if (draft.servicioId) gotoStep(1);
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>ZenFit Studio · Gimnasio & Yoga en Lima</title>
+  <meta name="description" content="ZenFit Studio - Yoga, pilates, meditación y entrenamiento funcional en un solo lugar. Reserva tu clase y transforma tu bienestar." />
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          colors: {
+            primary: '#7ba05b',
+            'primary-light': '#a8c98e',
+            'primary-dark': '#5d7f43',
+            'background-dark': '#0f1410',
+            'background-card': '#18211b',
+            'background-section': '#131a14',
+            gold: '#d4af6a',
+            sage: '#9eb38a',
+            border: '#2a3a2a'
+          },
+          fontFamily: {
+            display: ['Playfair Display'],
+            sans: ['Inter']
+          }
+        }
+      }
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+  <style>
+    .nav-link { padding: 0.5rem 0.9rem; border-radius: 0.5rem; font-size: 0.95rem; color: #d1d5db; transition: all 0.2s; }
+    .nav-link:hover { color: #a8c98e; background-color: rgba(123,160,91,0.06); }
+    .nav-link.active { color: #a8c98e; background-color: rgba(123,160,91,0.12); }
+  </style>
+</head>
+<body data-page="index" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="relative min-h-[92vh] flex items-center gradient-overlay" style="background-image: url('https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=1600&q=80'); background-size: cover; background-position: center;">
+      <div class="relative z-10 container mx-auto px-4 sm:px-6 lg:px-8 py-20">
+        <div class="max-w-3xl">
+          <p class="text-primary uppercase tracking-[0.35em] text-sm mb-5 font-semibold fade-in">Bienvenido a ZenFit Studio</p>
+          <h1 class="text-5xl md:text-7xl lg:text-8xl font-black text-white leading-[1.05] mb-6 font-display fade-in-delay-1">
+            Encuentra tu<br/><span class="text-primary italic">equilibrio</span> interior
+          </h1>
+          <p class="text-lg md:text-xl text-gray-200 max-w-2xl mb-10 leading-relaxed fade-in-delay-2">
+            Yoga, pilates, meditación y entrenamiento funcional guiados por instructores certificados. Reserva tu clase cuando quieras, paga solo por lo que vives.
+          </p>
+          <div class="flex flex-wrap gap-4 fade-in-delay-3">
+            <a href="reserva.html" class="btn-primary text-base">
+              <svg class="h-5 w-5" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M8 7V3m8 4V3m-9 8h10M5 21h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v12a2 2 0 002 2z"></path></svg>
+              Reservar Clase
+            </a>
+            <a href="servicios.html" class="btn-outline text-base">Explorar Servicios</a>
+          </div>
+        </div>
+      </div>
+      <div class="absolute bottom-10 left-1/2 -translate-x-1/2 z-10 animate-bounce">
+        <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 14l-7 7m0 0l-7-7m7 7V3"></path></svg>
+      </div>
+    </section>
+
+    <section class="py-20 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Nuestras disciplinas</p>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Servicios de día</h2>
+          <p class="text-gray-400 max-w-2xl mx-auto">Encuentra la práctica que resuena contigo: desde yin yoga hasta entrenamiento de alta intensidad.</p>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="bg-background-card border border-border rounded-xl overflow-hidden card-hover">
+            <div class="service-img-frame"><img src="https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=600&q=80" alt="Yoga" /></div>
+            <div class="p-6">
+              <h3 class="text-xl font-display font-bold text-white mb-2">Yoga</h3>
+              <p class="text-gray-400 text-sm mb-4">Vinyasa, Hatha y Yin para todos los niveles.</p>
+              <a href="servicios.html#yoga" class="text-primary text-sm font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">Ver más <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            </div>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl overflow-hidden card-hover">
+            <div class="service-img-frame"><img src="https://images.unsplash.com/photo-1518611012118-696072aa579a?w=600&q=80" alt="Pilates" /></div>
+            <div class="p-6">
+              <h3 class="text-xl font-display font-bold text-white mb-2">Pilates</h3>
+              <p class="text-gray-400 text-sm mb-4">Fortalecimiento del core y postura.</p>
+              <a href="servicios.html#pilates" class="text-primary text-sm font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">Ver más <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            </div>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl overflow-hidden card-hover">
+            <div class="service-img-frame"><img src="https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=600&q=80" alt="Meditación" /></div>
+            <div class="p-6">
+              <h3 class="text-xl font-display font-bold text-white mb-2">Meditación</h3>
+              <p class="text-gray-400 text-sm mb-4">Sesiones guiadas de mindfulness y呼吸.</p>
+              <a href="servicios.html#meditacion" class="text-primary text-sm font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">Ver más <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            </div>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl overflow-hidden card-hover">
+            <div class="service-img-frame"><img src="https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=600&q=80" alt="Funcional" /></div>
+            <div class="p-6">
+              <h3 class="text-xl font-display font-bold text-white mb-2">Funcional</h3>
+              <p class="text-gray-400 text-sm mb-4">Fuerza, movilidad y cardio en un solo lugar.</p>
+              <a href="servicios.html#funcional" class="text-primary text-sm font-semibold inline-flex items-center gap-1 hover:gap-2 transition-all">Ver más <svg class="h-4 w-4" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 5l7 7-7 7"></path></svg></a>
+            </div>
+          </div>
+        </div>
+        <div class="text-center mt-10">
+          <a href="servicios.html" class="btn-outline">Ver todos los servicios</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 gradient-radial">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Por qué elegirnos</p>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Una experiencia integral</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="text-center">
+            <div class="h-16 w-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"></path></svg>
+            </div>
+            <h4 class="text-white font-display font-bold text-xl mb-2">Horario flexible</h4>
+            <p class="text-gray-400 text-sm">Abres de 6:00 a 22:00 de lunes a viernes. Reserva cuando te quede mejor.</p>
+          </div>
+          <div class="text-center">
+            <div class="h-16 w-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12l2 2 4-4M7.835 4.697a3.42 3.42 0 001.946-.806 3.42 3.42 0 014.438 0 3.42 3.42 0 001.946.806 3.42 3.42 0 013.138 3.138 3.42 3.42 0 00.806 1.946 3.42 3.42 0 010 4.438 3.42 3.42 0 00-.806 1.946 3.42 3.42 0 01-3.138 3.138 3.42 3.42 0 00-1.946.806 3.42 3.42 0 01-4.438 0 3.42 3.42 0 00-1.946-.806 3.42 3.42 0 01-3.138-3.138 3.42 3.42 0 00-.806-1.946 3.42 3.42 0 010-4.438 3.42 3.42 0 00.806-1.946 3.42 3.42 0 013.138-3.138z"></path></svg>
+            </div>
+            <h4 class="text-white font-display font-bold text-xl mb-2">Instructores certificados</h4>
+            <p class="text-gray-400 text-sm">Profesionales con formación internacional en yoga, pilates y fitness.</p>
+          </div>
+          <div class="text-center">
+            <div class="h-16 w-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z"></path></svg>
+            </div>
+            <h4 class="text-white font-display font-bold text-xl mb-2">Paga por lo que vives</h4>
+            <p class="text-gray-400 text-sm">Sin mensualidades forzosas. Paga solo cada clase o elige un plan.</p>
+          </div>
+          <div class="text-center">
+            <div class="h-16 w-16 rounded-full bg-primary/10 border border-primary/30 flex items-center justify-center mx-auto mb-4">
+              <svg class="h-8 w-8 text-primary" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 12l2-2m0 0l7-7 7 7M5 10v10a1 1 0 001 1h3m10-11l2 2m-2-2v10a1 1 0 01-1 1h-3m-6 0a1 1 0 001-1v-4a1 1 0 011-1h2a1 1 0 011 1v4a1 1 0 001 1m-6 0h6"></path></svg>
+            </div>
+            <h4 class="text-white font-display font-bold text-xl mb-2">Espacio premium</h4>
+            <p class="text-gray-400 text-sm">Salas amplias, iluminación cálida, mats y props incluidos.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Planes populares</p>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Elige tu ritmo</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6 max-w-5xl mx-auto">
+          <div class="bg-background-card border border-border rounded-xl p-8 card-hover">
+            <h3 class="text-2xl font-display font-bold text-white mb-2">Básico</h3>
+            <p class="text-gray-400 text-sm mb-6">Ideal para empezar</p>
+            <div class="mb-6">
+              <span class="text-5xl font-display font-bold text-white">S/. 199</span>
+              <span class="text-gray-400">/mes</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Acceso a musculación</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Horario 6:00 - 16:00</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>2 clases grupales/mes</li>
+            </ul>
+            <a href="registro.html" class="btn-outline w-full">Elegir plan</a>
+          </div>
+          <div class="bg-background-card border-2 border-primary rounded-xl p-8 relative card-hover shadow-2xl shadow-primary/20">
+            <span class="absolute -top-3 left-1/2 -translate-x-1/2 bg-primary text-white text-xs font-bold uppercase tracking-wider px-3 py-1 rounded-full">Más popular</span>
+            <h3 class="text-2xl font-display font-bold text-white mb-2">Yoga Ilimitado</h3>
+            <p class="text-gray-400 text-sm mb-6">Equilibrio y bienestar</p>
+            <div class="mb-6">
+              <span class="text-5xl font-display font-bold text-primary">S/. 349</span>
+              <span class="text-gray-400">/mes</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Clases de yoga ilimitadas</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Pilates y meditación</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Acceso 6:00 - 22:00</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Toalla y app de seguimiento</li>
+            </ul>
+            <a href="registro.html" class="btn-primary w-full">Elegir plan</a>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl p-8 card-hover">
+            <h3 class="text-2xl font-display font-bold text-white mb-2">Premium</h3>
+            <p class="text-gray-400 text-sm mb-6">Todo en uno</p>
+            <div class="mb-6">
+              <span class="text-5xl font-display font-bold text-white">S/. 599</span>
+              <span class="text-gray-400">/mes</span>
+            </div>
+            <ul class="space-y-3 text-sm text-gray-300 mb-8">
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Todo del plan Yoga</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Funcional y musculación</li>
+              <li class="flex items-center gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg>Sesión mensual con coach</li>
+            </ul>
+            <a href="registro.html" class="btn-outline w-full">Elegir plan</a>
+          </div>
+        </div>
+        <div class="text-center mt-8">
+          <a href="precios.html" class="text-primary hover:underline">Ver comparación completa de planes &rarr;</a>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-14">
+          <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Testimonios</p>
+          <h2 class="text-4xl md:text-5xl font-display font-bold text-white mb-4">Lo que dicen nuestros alumnos</h2>
+        </div>
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-6">
+          <div class="bg-background-card border border-border rounded-xl p-7">
+            <div class="flex gap-1 text-gold mb-3">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed mb-5">"Llegué buscando bajar de peso y encontré un refugio. Las clases de yoga con Lucía cambiaron mi postura y mi sueño. El sistema de reserva es súper práctico."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=100&q=80" alt="" class="h-12 w-12 rounded-full object-cover"/>
+              <div>
+                <p class="text-white font-semibold">Ana García</p>
+                <p class="text-gray-400 text-xs">Miembro desde 2024</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl p-7">
+            <div class="flex gap-1 text-gold mb-3">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed mb-5">"El entrenamiento funcional con Andrés es exigente pero se adapta a todos. En 3 meses bajé 8kg y subí fuerza. La app para reservar es de lo mejor."</p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=100&q=80" alt="" class="h-12 w-12 rounded-full object-cover"/>
+              <div>
+                <p class="text-white font-semibold">Carlos Ruiz</p>
+                <p class="text-gray-400 text-xs">Miembro desde 2025</p>
+              </div>
+            </div>
+          </div>
+          <div class="bg-background-card border border-border rounded-xl p-7">
+            <div class="flex gap-1 text-gold mb-3">
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+              <svg class="h-4 w-4" fill="currentColor" viewBox="0 0 20 20"><path d="M9.049 2.927c.3-.921 1.603-.921 1.902 0l1.07 3.292a1 1 0 00.95.69h3.462c.969 0 1.371 1.24.588 1.81l-2.8 2.034a1 1 0 00-.364 1.118l1.07 3.292c.3.921-.755 1.688-1.54 1.118l-2.8-2.034a1 1 0 00-1.176 0l-2.8 2.034c-.784.57-1.838-.197-1.539-1.118l1.07-3.292a1 1 0 00-.364-1.118L2.98 8.72c-.783-.57-.38-1.81.588-1.81h3.461a1 1 0 00.951-.69l1.07-3.292z"/></svg>
+            </div>
+            <p class="text-gray-300 italic leading-relaxed mb-5">"Vine por el yoga prenatal y me quedé por la comunidad. Las sesiones de meditación guiada me ayudaron con la ansiedad. ¡Un lugar sagrado!"</p>
+            <div class="flex items-center gap-3">
+              <img src="https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=100&q=80" alt="" class="h-12 w-12 rounded-full object-cover"/>
+              <div>
+                <p class="text-white font-semibold">María López</p>
+                <p class="text-gray-400 text-xs">Miembro desde 2024</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section class="py-20 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="bg-gradient-to-r from-primary/10 via-primary/20 to-primary/10 border border-primary/30 rounded-2xl p-10 md:p-14 flex flex-col md:flex-row items-center gap-8">
+          <div class="flex-1">
+            <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">Tu primera clase te espera</h2>
+            <p class="text-gray-300 text-lg">Regístrate hoy y obtén 20% de descuento en tu primera reserva. Sin compromisos.</p>
+          </div>
+          <div class="flex flex-wrap gap-3">
+            <a href="registro.html" class="btn-primary">Crear cuenta</a>
+            <a href="reserva.html" class="btn-outline">Reservar ahora</a>
+          </div>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Horarios · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="horarios" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Tu próxima clase</p>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-4">Horario de clases</h1>
+        <p class="text-gray-400 text-lg">Encuentra el horario que mejor se adapte a tu rutina.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3 mb-8 justify-center">
+          <button class="tab-btn active" data-cat="all">Todas</button>
+          <button class="tab-btn" data-cat="yoga">Yoga</button>
+          <button class="tab-btn" data-cat="pilates">Pilates</button>
+          <button class="tab-btn" data-cat="meditacion">Meditación</button>
+          <button class="tab-btn" data-cat="funcional">Funcional</button>
+          <button class="tab-btn" data-cat="gym">Gym</button>
+          <button class="tab-btn" data-cat="cardio">Cardio</button>
+        </div>
+
+        <div id="horariosGrid" class="space-y-6"></div>
+      </div>
+    </section>
+
+    <section class="py-12 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="text-center mb-10">
+          <h3 class="text-3xl font-display font-bold text-white">Horario de atención</h3>
+          <p class="text-gray-400 mt-2">Nuestro studio abre en los siguientes horarios.</p>
+        </div>
+        <div id="horarioAtencion" class="max-w-2xl mx-auto bg-background-card border border-border rounded-xl overflow-hidden"></div>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <script src="js/main.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const days = [
+        { key: 'lunes', label: 'Lunes' },
+        { key: 'martes', label: 'Martes' },
+        { key: 'miercoles', label: 'Miércoles' },
+        { key: 'jueves', label: 'Jueves' },
+        { key: 'viernes', label: 'Viernes' },
+        { key: 'sabado', label: 'Sábado' },
+        { key: 'domingo', label: 'Domingo' }
+      ];
+
+      let cat = 'all';
+      function render() {
+        const grid = document.getElementById('horariosGrid');
+        grid.innerHTML = days.map(d => {
+          let clases = HORARIOS_CLASES[d.key] || [];
+          if (cat !== 'all') clases = clases.filter(c => UI.getServicio(c.servicio)?.categoria === cat);
+          if (clases.length === 0) return '';
+          return `
+            <div class="bg-background-card border border-border rounded-xl overflow-hidden">
+              <div class="bg-background-section px-6 py-4 border-b border-border flex items-center justify-between">
+                <h3 class="text-xl font-display font-bold text-white">${d.label}</h3>
+                <span class="text-xs text-gray-400 uppercase tracking-wider">${clases.length} clase${clases.length !== 1 ? 's' : ''}</span>
+              </div>
+              <div class="divide-y divide-border">
+                ${clases.map(c => {
+                  const s = UI.getServicio(c.servicio);
+                  const p = UI.getProfesional(c.profesional);
+                  return `<div class="px-6 py-4 grid grid-cols-12 gap-3 items-center hover:bg-background-dark transition">
+                    <div class="col-span-3 md:col-span-2">
+                      <p class="text-primary font-bold text-xl">${c.hora}</p>
+                      <p class="text-gray-400 text-xs">${s.duracion} min</p>
+                    </div>
+                    <div class="col-span-9 md:col-span-6 flex items-center gap-3">
+                      <img src="${s.imagen}" alt="" class="h-10 w-10 rounded-lg object-cover"/>
+                      <div>
+                        <p class="text-white font-bold">${s.nombre}</p>
+                        <p class="text-gray-400 text-xs">${s.categoria}</p>
+                      </div>
+                    </div>
+                    <div class="hidden md:flex md:col-span-2 items-center gap-2">
+                      <img src="${p.foto}" alt="" class="h-6 w-6 rounded-full object-cover"/>
+                      <span class="text-gray-300 text-sm">${p.nombre.split(' ')[0]}</span>
+                    </div>
+                    <div class="col-span-12 md:col-span-2 flex items-center justify-end gap-3">
+                      <span class="text-xs px-2 py-1 rounded-full bg-background-dark border border-border text-gray-300">${c.nivel}</span>
+                      <a href="reserva.html?servicio=${s.id}" class="text-primary text-sm font-semibold hover:underline">Reservar</a>
+                    </div>
+                  </div>`;
+                }).join('')}
+              </div>
+            </div>`;
+        }).filter(Boolean).join('') || '<p class="text-center text-gray-400 py-10">No hay clases en esta categoría.</p>';
+      }
+      render();
+
+      document.querySelectorAll('[data-cat]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-cat]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          cat = btn.dataset.cat;
+          render();
+        });
+      });
+
+      const atencion = document.getElementById('horarioAtencion');
+      atencion.innerHTML = days.map(d => {
+        const h = HORARIOS_ATENCION[d.key];
+        const abierto = h.abierto;
+        const color = abierto ? 'text-green-400' : 'text-red-400';
+        const bg = abierto ? 'bg-green-500/15' : 'bg-red-500/15';
+        return `<div class="flex items-center justify-between px-6 py-4 ${d.key !== 'domingo' ? 'border-b border-border' : ''}">
+          <span class="text-white font-semibold">${d.label}</span>
+          <span class="text-gray-300 text-sm">${abierto ? h.desde + ' - ' + h.hasta : 'Cerrado'}</span>
+          <span class="${color} ${bg} px-3 py-1 rounded-full text-xs font-semibold uppercase">${abierto ? 'Abierto' : 'Cerrado'}</span>
+        </div>`;
+      }).join('');
+    });
+  </script>
+</body>
+</html>

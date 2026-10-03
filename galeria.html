@@ -1,0 +1,131 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Galería · ZenFit Studio</title>
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <link href="https://fonts.googleapis.com" rel="preconnect" />
+  <link crossorigin="" href="https://fonts.gstatic.com" rel="preconnect" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600;700;800;900&family=Inter:wght@300;400;500;600;700&display=swap" rel="stylesheet" />
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: { extend: { colors: {
+        primary: '#7ba05b', 'primary-light': '#a8c98e', 'primary-dark': '#5d7f43',
+        'background-dark': '#0f1410', 'background-card': '#18211b', 'background-section': '#131a14',
+        gold: '#d4af6a', sage: '#9eb38a', border: '#2a3a2a'
+      }, fontFamily: { display: ['Playfair Display'], sans: ['Inter'] }}}
+    }
+  </script>
+  <link rel="stylesheet" href="css/styles.css" />
+</head>
+<body data-page="galeria" class="bg-background-dark text-gray-200 font-sans antialiased">
+  <div id="appHeader"></div>
+
+  <main>
+    <section class="page-header">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <p class="text-primary uppercase tracking-[0.3em] text-sm font-semibold mb-3">Conoce nuestro espacio</p>
+        <h1 class="text-5xl md:text-6xl font-display font-bold text-white mb-4">Galería</h1>
+        <p class="text-gray-400 text-lg max-w-2xl">Instalaciones, clases y momentos de nuestra comunidad.</p>
+      </div>
+    </section>
+
+    <section class="py-12">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8">
+        <div class="flex flex-wrap gap-3 mb-8 justify-center">
+          <button class="tab-btn active" data-cat="all">Todas</button>
+          <button class="tab-btn" data-cat="instalaciones">Instalaciones</button>
+          <button class="tab-btn" data-cat="clases">Clases</button>
+          <button class="tab-btn" data-cat="instructores">Instructores</button>
+        </div>
+
+        <div id="galleryGrid" class="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-4"></div>
+      </div>
+    </section>
+
+    <section class="py-16 bg-background-section">
+      <div class="container mx-auto px-4 sm:px-6 lg:px-8 text-center">
+        <h2 class="text-3xl md:text-4xl font-display font-bold text-white mb-4">¿Listo para ser parte?</h2>
+        <p class="text-gray-400 max-w-xl mx-auto mb-8">Reserva tu primera clase hoy y descubre por qué nuestros miembros vuelven cada semana.</p>
+        <a href="reserva.html" class="btn-primary">Reservar primera clase</a>
+      </div>
+    </section>
+  </main>
+
+  <div id="appFooter"></div>
+  <div id="lightbox" class="lightbox">
+    <span class="lightbox-close">&times;</span>
+    <img id="lightboxImg" src="" alt=""/>
+    <div id="lightboxCaption" class="lightbox-caption"></div>
+  </div>
+
+  <script src="js/main.js"></script>
+  <script>
+    const GALERIA = [
+      { url: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80', cat: 'instalaciones', titulo: 'Sala principal de yoga' },
+      { url: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80', cat: 'clases', titulo: 'Clase de Hatha Yoga' },
+      { url: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80', cat: 'clases', titulo: 'Pilates Mat en grupo' },
+      { url: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80', cat: 'clases', titulo: 'Entrenamiento funcional' },
+      { url: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80', cat: 'clases', titulo: 'Yin Yoga' },
+      { url: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80', cat: 'instalaciones', titulo: 'Espacio zen de meditación' },
+      { url: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80', cat: 'clases', titulo: 'Sala de musculación' },
+      { url: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80', cat: 'clases', titulo: 'Sesión de spinning' },
+      { url: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=800&q=80', cat: 'instructores', titulo: 'Lucía - Instructora de Yoga' },
+      { url: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=800&q=80', cat: 'instructores', titulo: 'Mateo - Instructor' },
+      { url: 'https://images.unsplash.com/photo-1438761681033-6461ffad8d80?w=800&q=80', cat: 'instructores', titulo: 'Camila - Coach Funcional' },
+      { url: 'https://images.unsplash.com/photo-1500648767791-00dcc994a43e?w=800&q=80', cat: 'instructores', titulo: 'Andrés - Entrenador' },
+      { url: 'https://images.unsplash.com/photo-1518310383802-640c2de311b2?w=800&q=80', cat: 'instalaciones', titulo: 'Recepción del studio' },
+      { url: 'https://images.unsplash.com/photo-1576678927484-cc907957088c?w=800&q=80', cat: 'instalaciones', titulo: 'Vestuarios' },
+      { url: 'https://images.unsplash.com/photo-1554344728-77cf90d9ed26?w=800&q=80', cat: 'instalaciones', titulo: 'Zona de hidratación' },
+      { url: 'https://images.unsplash.com/photo-1499728603263-13726abce5fd?w=800&q=80', cat: 'clases', titulo: 'Sesión de meditación grupal' }
+    ];
+
+    document.addEventListener('DOMContentLoaded', () => {
+      const grid = document.getElementById('galleryGrid');
+      let cat = 'all';
+      function render() {
+        const list = cat === 'all' ? GALERIA : GALERIA.filter(g => g.cat === cat);
+        grid.innerHTML = list.map(g => `
+          <div class="gallery-item" data-url="${g.url}" data-title="${g.titulo}">
+            <img src="${g.url}" alt="${g.titulo}" loading="lazy"/>
+            <div class="gallery-overlay">
+              <div>
+                <p class="text-white font-semibold">${g.titulo}</p>
+                <p class="text-primary text-xs uppercase tracking-wider">${g.cat}</p>
+              </div>
+            </div>
+          </div>`).join('');
+        attachLightbox();
+      }
+      render();
+
+      document.querySelectorAll('[data-cat]').forEach(btn => {
+        btn.addEventListener('click', () => {
+          document.querySelectorAll('[data-cat]').forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          cat = btn.dataset.cat;
+          render();
+        });
+      });
+
+      const lightbox = document.getElementById('lightbox');
+      const lbImg = document.getElementById('lightboxImg');
+      const lbCap = document.getElementById('lightboxCaption');
+      function attachLightbox() {
+        document.querySelectorAll('.gallery-item').forEach(item => {
+          item.addEventListener('click', () => {
+            lbImg.src = item.dataset.url;
+            lbCap.textContent = item.dataset.title;
+            lightbox.classList.add('active');
+          });
+        });
+      }
+      lightbox.querySelector('.lightbox-close').addEventListener('click', () => lightbox.classList.remove('active'));
+      lightbox.addEventListener('click', e => { if (e.target === lightbox) lightbox.classList.remove('active'); });
+      document.addEventListener('keydown', e => { if (e.key === 'Escape') lightbox.classList.remove('active'); });
+    });
+  </script>
+</body>
+</html>
