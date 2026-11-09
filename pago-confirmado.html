@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -42,7 +42,7 @@
                 <svg class="h-7 w-7 text-green-700" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 3c-1.5 0-3 .5-4 1.5C7 5.5 6 7 6 9c0 1 .3 2 .8 3l-1.5 2c-.4.5-.3 1.3.3 1.7l.7.4c.5.3 1.2.2 1.6-.3l1.5-1.7c.6.3 1.4.5 2.1.5v.4c0 .8.7 1.5 1.5 1.5s1.5-.7 1.5-1.5V15c.7 0 1.5-.2 2.1-.5l1.5 1.7c.4.5 1.1.6 1.6.3l.7-.4c.6-.4.7-1.2.3-1.7l-1.5-2c.5-1 .8-2 .8-3 0-2-1-3.5-2-4.5-1-1-2.5-1.5-4-1.5z"></path></svg>
                 <h2 class="text-2xl font-display font-bold text-green-900">ZenFit Studio</h2>
               </div>
-              <p class="text-xs text-gray-500">RUC: 20123456789 · Av. Larco 345, Miraflores, Lima</p>
+              <p class="text-xs text-gray-500">RUC: 20123456789 · Av. Larco 345, Providencia, Santiago</p>
             </div>
             <div class="text-right">
               <p class="text-xs uppercase tracking-wider text-gray-500">Recibo</p>
@@ -159,7 +159,7 @@
       const s = UI.getServicio(reserva.servicioId);
       document.getElementById('emailUser').textContent = user.email;
       document.getElementById('cliNombre').textContent = user.nombre;
-      document.getElementById('fechaEmision').textContent = new Date().toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric' });
+      document.getElementById('fechaEmision').textContent = new Date().toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric' });
       document.getElementById('numOperacion').textContent = (pago?.operacion) || ('OP-' + Date.now().toString().slice(-10));
       document.getElementById('metodoPago').textContent = (pago?.metodo) || reserva.metodoPago || 'tarjeta';
       document.getElementById('reciboTotal').textContent = UI.formatPrice(reserva.precio);

@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -103,7 +103,7 @@
               ¿Ofrecen clases privadas?
               <svg class="h-5 w-5 text-primary group-open:rotate-180 transition" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 9l-7 7-7-7"></path></svg>
             </summary>
-            <p class="text-gray-300 mt-3 text-sm leading-relaxed">Sí, agendamos sesiones 1:1 con nuestros instructores. Consulta disponibilidad por WhatsApp o al correo hola@zenfit.pe.</p>
+            <p class="text-gray-300 mt-3 text-sm leading-relaxed">Sí, agendamos sesiones 1:1 con nuestros instructores. Consulta disponibilidad por WhatsApp o al correo hola@zenfit.cl.</p>
           </details>
         </div>
       </div>
@@ -127,10 +127,10 @@
             <h3 class="text-2xl font-display font-bold text-white mb-2">${p.nombre}</h3>
             <p class="text-gray-400 text-sm mb-6">${p.destacado ? 'Equilibrio y bienestar' : p.nombre === 'Básico' ? 'Ideal para empezar' : 'Todo en uno'}</p>
             <div class="mb-6">
-              <span class="text-5xl font-display font-bold ${p.destacado ? 'text-primary' : 'text-white'}">S/. ${getPrecio(p)}</span>
+              <span class="text-5xl font-display font-bold ${p.destacado ? 'text-primary' : 'text-white'}">CLP$ ${Number(getPrecio(p)).toLocaleString('es-CL', { maximumFractionDigits: 0 })}</span>
               <span class="text-gray-400">${getLabel()}</span>
             </div>
-            ${periodo === 'anual' ? `<p class="text-primary text-xs mb-4">Equivale a S/. ${(p.precioAnual / 12).toFixed(2)}/mes · Ahorras S/. ${p.precioMensual * 12 - p.precioAnual}</p>` : ''}
+            ${periodo === 'anual' ? `<p class="text-primary text-xs mb-4">Equivale a CLP$ ${Number((p.precioAnual / 12)).toLocaleString('es-CL', { maximumFractionDigits: 0 })}/mes · Ahorras CLP$ ${Number(p.precioMensual * 12 - p.precioAnual).toLocaleString('es-CL', { maximumFractionDigits: 0 })}</p>` : ''}
             <ul class="space-y-3 text-sm text-gray-300 mb-8 min-h-[160px]">
               ${p.caracteristicas.map(c => `<li class="flex items-start gap-2"><svg class="h-4 w-4 text-primary flex-shrink-0 mt-0.5" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M16.707 5.293a1 1 0 010 1.414l-8 8a1 1 0 01-1.414 0l-4-4a1 1 0 011.414-1.414L8 12.586l7.293-7.293a1 1 0 011.414 0z" clip-rule="evenodd"/></svg><span>${c}</span></li>`).join('')}
             </ul>

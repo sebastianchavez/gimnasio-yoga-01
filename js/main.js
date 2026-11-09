@@ -1,22 +1,22 @@
 const STORAGE_KEYS = {
-  USERS: 'gy_users',
-  SESSION: 'gy_session',
-  RESERVAS: 'gy_reservas',
-  RESERVA_DRAFT: 'gy_reserva_draft',
-  PAGO_DRAFT: 'gy_pago_draft',
-  CONTACTOS: 'gy_contactos',
-  THEME: 'gy_theme'
+  USERS: 'gy_users_clp_v1',
+  SESSION: 'gy_session_clp_v1',
+  RESERVAS: 'gy_reservas_clp_v1',
+  RESERVA_DRAFT: 'gy_reserva_draft_clp_v1',
+  PAGO_DRAFT: 'gy_pago_draft_clp_v1',
+  CONTACTOS: 'gy_contactos_clp_v1',
+  THEME: 'gy_theme_clp_v1'
 };
 
 const SERVICIOS = [
-  { id: 's1', categoria: 'yoga', nombre: 'Yoga Vinyasa', descripcion: 'Flujo dinámico de posturas sincronizadas con la respiración.', duracion: 60, precio: 45, imagen: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80' },
-  { id: 's2', categoria: 'yoga', nombre: 'Hatha Yoga', descripcion: 'Posturas clásicas y suaves para equilibrar cuerpo y mente.', duracion: 75, precio: 50, imagen: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80' },
-  { id: 's3', categoria: 'yoga', nombre: 'Yin Yoga', descripcion: 'Estiramientos profundos y meditación en安静.', duracion: 75, precio: 50, imagen: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80' },
-  { id: 's4', categoria: 'pilates', nombre: 'Pilates Mat', descripcion: 'Fortalecimiento del core y postural en colchoneta.', duracion: 50, precio: 40, imagen: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80' },
-  { id: 's5', categoria: 'meditacion', nombre: 'Meditación Guiada', descripcion: 'Sesiones de mindfulness y respiración consciente.', duracion: 45, precio: 35, imagen: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80' },
-  { id: 's6', categoria: 'funcional', nombre: 'Entrenamiento Funcional', descripcion: 'Circuitos de fuerza, movilidad y resistencia.', duracion: 60, precio: 55, imagen: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80' },
-  { id: 's7', categoria: 'gym', nombre: 'Musculación Guiada', descripcion: 'Acompañamiento personalizado en sala de pesas.', duracion: 60, precio: 60, imagen: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80' },
-  { id: 's8', categoria: 'cardio', nombre: 'Spinning Indoor', descripcion: 'Ciclismo indoor con ritmo y energía.', duracion: 45, precio: 40, imagen: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80' }
+  { id: 's1', categoria: 'yoga', nombre: 'Yoga Vinyasa', descripcion: 'Flujo dinámico de posturas sincronizadas con la respiración.', duracion: 60, precio: 11250, imagen: 'https://images.unsplash.com/photo-1545205597-3d9d02c29597?w=800&q=80' },
+  { id: 's2', categoria: 'yoga', nombre: 'Hatha Yoga', descripcion: 'Posturas clásicas y suaves para equilibrar cuerpo y mente.', duracion: 75, precio: 12500, imagen: 'https://images.unsplash.com/photo-1506126613408-eca07ce68773?w=800&q=80' },
+  { id: 's3', categoria: 'yoga', nombre: 'Yin Yoga', descripcion: 'Estiramientos profundos y meditación en安静.', duracion: 75, precio: 12500, imagen: 'https://images.unsplash.com/photo-1571902943202-507ec2618e8f?w=800&q=80' },
+  { id: 's4', categoria: 'pilates', nombre: 'Pilates Mat', descripcion: 'Fortalecimiento del core y postural en colchoneta.', duracion: 50, precio: 10000, imagen: 'https://images.unsplash.com/photo-1518611012118-696072aa579a?w=800&q=80' },
+  { id: 's5', categoria: 'meditacion', nombre: 'Meditación Guiada', descripcion: 'Sesiones de mindfulness y respiración consciente.', duracion: 45, precio: 8750, imagen: 'https://images.unsplash.com/photo-1545389336-cf090694435e?w=800&q=80' },
+  { id: 's6', categoria: 'funcional', nombre: 'Entrenamiento Funcional', descripcion: 'Circuitos de fuerza, movilidad y resistencia.', duracion: 60, precio: 13750, imagen: 'https://images.unsplash.com/photo-1571019614242-c5c5dee9f50b?w=800&q=80' },
+  { id: 's7', categoria: 'gym', nombre: 'Musculación Guiada', descripcion: 'Acompañamiento personalizado en sala de pesas.', duracion: 60, precio: 15000, imagen: 'https://images.unsplash.com/photo-1581009146145-b5ef050c2e1e?w=800&q=80' },
+  { id: 's8', categoria: 'cardio', nombre: 'Spinning Indoor', descripcion: 'Ciclismo indoor con ritmo y energía.', duracion: 45, precio: 10000, imagen: 'https://images.unsplash.com/photo-1517836357463-d25dfeac3438?w=800&q=80' }
 ];
 
 const PROFESIONALES = [
@@ -76,9 +76,9 @@ const HORARIOS_CLASES = {
 };
 
 const PLANES = [
-  { id: 'plan-basico', nombre: 'Básico', precioMensual: 199, precioAnual: 1990, destacado: false, caracteristicas: ['Acceso a musculación', 'Horario 6:00 - 16:00', '2 clases grupales/mes', 'Asesoría inicial'], color: 'border-gray-700' },
-  { id: 'plan-yoga', nombre: 'Yoga Ilimitado', precioMensual: 349, precioAnual: 3490, destacado: true, caracteristicas: ['Clases de yoga ilimitadas', 'Pilates y meditación', 'Acceso 6:00 - 22:00', 'Toalla y mat incluidos', 'App de seguimiento'], color: 'border-primary' },
-  { id: 'plan-premium', nombre: 'Premium', precioMensual: 599, precioAnual: 5990, destacado: false, caracteristicas: ['Todo del plan Yoga', 'Entrenamiento funcional', 'Spinning ilimitado', '1 sesión mensual con coach', 'Plan nutricional'], color: 'border-gray-700' }
+  { id: 'plan-basico', nombre: 'Básico', precioMensual: 49750, precioAnual: 497500, destacado: false, caracteristicas: ['Acceso a musculación', 'Horario 6:00 - 16:00', '2 clases grupales/mes', 'Asesoría inicial'], color: 'border-gray-700' },
+  { id: 'plan-yoga', nombre: 'Yoga Ilimitado', precioMensual: 87250, precioAnual: 872500, destacado: true, caracteristicas: ['Clases de yoga ilimitadas', 'Pilates y meditación', 'Acceso 6:00 - 22:00', 'Toalla y mat incluidos', 'App de seguimiento'], color: 'border-primary' },
+  { id: 'plan-premium', nombre: 'Premium', precioMensual: 149750, precioAnual: 1497500, destacado: false, caracteristicas: ['Todo del plan Yoga', 'Entrenamiento funcional', 'Spinning ilimitado', '1 sesión mensual con coach', 'Plan nutricional'], color: 'border-gray-700' }
 ];
 
 const Storage = {
@@ -98,8 +98,8 @@ const Auth = {
     const users = Storage.get(STORAGE_KEYS.USERS, []);
     if (users.length === 0) {
       Storage.set(STORAGE_KEYS.USERS, [
-        { id: 'u1', nombre: 'Ana García', email: 'ana@yoga.com', telefono: '+51 987 654 321', password: '123456', foto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', createdAt: Date.now() - 86400000 * 60 },
-        { id: 'u2', nombre: 'Carlos Ruiz', email: 'carlos@gym.com', telefono: '+51 999 888 777', password: '123456', foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', createdAt: Date.now() - 86400000 * 30 }
+        { id: 'u1', nombre: 'Ana García', email: 'ana@yoga.com', telefono: '+56 9 8765 4321', password: '123456', foto: 'https://images.unsplash.com/photo-1544005313-94ddf0286df2?w=200&q=80', createdAt: Date.now() - 86400000 * 60 },
+        { id: 'u2', nombre: 'Carlos Ruiz', email: 'carlos@gym.com', telefono: '+56 9 9988 8777', password: '123456', foto: 'https://images.unsplash.com/photo-1507003211169-0a1dd7228f2d?w=200&q=80', createdAt: Date.now() - 86400000 * 30 }
       ]);
     }
   },
@@ -169,11 +169,11 @@ const Reservas = {
       const f3 = new Date(today); f3.setDate(today.getDate() + 2);
       const f4 = new Date(today); f4.setDate(today.getDate() - 10);
       const samples = [
-        { id: 'r1', userId: 'u1', servicioId: 's1', profesionalId: 'p1', fecha: fmt(f0), hora: '07:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'tarjeta', precio: 45, notas: '', createdAt: Date.now() - 86400000 * 2 },
-        { id: 'r2', userId: 'u1', servicioId: 's4', profesionalId: 'p3', fecha: fmt(f1), hora: '17:00', estado: 'pendiente', pago: 'pendiente', metodoPago: null, precio: 40, notas: '', createdAt: Date.now() - 86400000 },
-        { id: 'r3', userId: 'u1', servicioId: 's5', profesionalId: 'p2', fecha: fmt(f2), hora: '12:00', estado: 'completada', pago: 'pagado', metodoPago: 'yape', precio: 35, notas: '', createdAt: Date.now() - 86400000 * 7 },
-        { id: 'r4', userId: 'u2', servicioId: 's6', profesionalId: 'p4', fecha: fmt(f3), hora: '09:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'transferencia', precio: 55, notas: '', createdAt: Date.now() - 86400000 * 1 },
-        { id: 'r5', userId: 'u2', servicioId: 's8', profesionalId: 'p4', fecha: fmt(f4), hora: '19:00', estado: 'cancelada', pago: 'pendiente', metodoPago: null, precio: 40, notas: '', createdAt: Date.now() - 86400000 * 12 }
+        { id: 'r1', userId: 'u1', servicioId: 's1', profesionalId: 'p1', fecha: fmt(f0), hora: '07:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'tarjeta', precio: 11250, notas: '', createdAt: Date.now() - 86400000 * 2 },
+        { id: 'r2', userId: 'u1', servicioId: 's4', profesionalId: 'p3', fecha: fmt(f1), hora: '17:00', estado: 'pendiente', pago: 'pendiente', metodoPago: null, precio: 10000, notas: '', createdAt: Date.now() - 86400000 },
+        { id: 'r3', userId: 'u1', servicioId: 's5', profesionalId: 'p2', fecha: fmt(f2), hora: '12:00', estado: 'completada', pago: 'pagado', metodoPago: 'yape', precio: 8750, notas: '', createdAt: Date.now() - 86400000 * 7 },
+        { id: 'r4', userId: 'u2', servicioId: 's6', profesionalId: 'p4', fecha: fmt(f3), hora: '09:00', estado: 'confirmada', pago: 'pagado', metodoPago: 'transferencia', precio: 13750, notas: '', createdAt: Date.now() - 86400000 * 1 },
+        { id: 'r5', userId: 'u2', servicioId: 's8', profesionalId: 'p4', fecha: fmt(f4), hora: '19:00', estado: 'cancelada', pago: 'pendiente', metodoPago: null, precio: 10000, notas: '', createdAt: Date.now() - 86400000 * 12 }
       ];
       Storage.set(STORAGE_KEYS.RESERVAS, samples);
     }
@@ -274,14 +274,14 @@ const UI = {
   formatDate(dateStr) {
     if (!dateStr) return '';
     const d = new Date(dateStr + 'T00:00:00');
-    return d.toLocaleDateString('es-ES', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
+    return d.toLocaleDateString('es-CL', { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' });
   },
   formatDateShort(dateStr) {
     if (!dateStr) return '';
     const d = new Date(dateStr + 'T00:00:00');
-    return d.toLocaleDateString('es-ES', { day: '2-digit', month: 'short', year: 'numeric' });
+    return d.toLocaleDateString('es-CL', { day: '2-digit', month: 'short', year: 'numeric' });
   },
-  formatPrice(n) { return 'S/. ' + Number(n).toFixed(2); },
+  formatPrice(n) { return 'CLP$ ' + Number(n).toLocaleString('es-CL', { maximumFractionDigits: 0 }); },
   getServicio(id) { return SERVICIOS.find(s => s.id === id) || null; },
   getProfesional(id) { return PROFESIONALES.find(p => p.id === id) || null; },
   estadoBadge(estado) {
@@ -392,9 +392,9 @@ const UI = {
             <div>
               <h4 class="text-white font-semibold mb-4">Contacto</h4>
               <ul class="space-y-3 text-sm text-gray-400">
-                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Av. Larco 345, Miraflores, Lima</li>
-                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>(01) 234-5678</li>
-                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>hola@zenfit.pe</li>
+                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M17.657 16.657L13.414 20.9a1.998 1.998 0 01-2.827 0l-4.244-4.243a8 8 0 1111.314 0z"></path><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11a3 3 0 11-6 0 3 3 0 016 0z"></path></svg>Av. Larco 345, Providencia, Santiago</li>
+                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 5a2 2 0 012-2h3.28a1 1 0 01.948.684l1.498 4.493a1 1 0 01-.502 1.21l-2.257 1.13a11.042 11.042 0 005.516 5.516l1.13-2.257a1 1 0 011.21-.502l4.493 1.498a1 1 0 01.684.949V19a2 2 0 01-2 2h-1C9.716 21 3 14.284 3 6V5z"></path></svg>+56 2 2345 6789</li>
+                <li class="flex items-start gap-2"><svg class="h-4 w-4 mt-0.5 text-primary flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>hola@zenfit.cl</li>
               </ul>
             </div>
           </div>

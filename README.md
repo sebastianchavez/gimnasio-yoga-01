@@ -98,8 +98,8 @@ Inicio → [Login / Registro] → Servicios → Reserva (wizard 3 pasos)
 ### Métodos de pago (simulados)
 
 - **Tarjeta**: validación Luhn + vencimiento + CVV
-- **Yape**: número de operación (8-10 dígitos)
-- **Transferencia**: número de operación BCP
+- **Transferencia**: número de operación (8-10 dígitos)
+- **Transferencia**: número de operación BancoEstado
 - **Efectivo**: pago en recepción
 
 ---
@@ -155,7 +155,7 @@ Yoga Vinyasa, Hatha Yoga, Yin Yoga, Pilates Mat, Meditación Guiada, Entrenamien
 Lucía Fernández (yoga), Mateo Silva (yoga), Camila Vega (funcional), Andrés Rojas (entrenador).
 
 ### Planes (3)
-Básico (S/. 199), Yoga Ilimitado (S/. 349, destacado), Premium (S/. 599).
+Básico (CLP$ 49.750), Yoga Ilimitado (CLP$ 87.250, destacado), Premium (CLP$ 149.750).
 
 ---
 

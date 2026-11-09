@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -169,7 +169,7 @@
       document.getElementById('pagoTotal').textContent = UI.formatPrice(reserva.precio);
 
       document.getElementById('notasText').textContent = reserva.notas ? reserva.notas : 'Sin notas registradas para esta reserva.';
-      document.getElementById('fechaCreacion').textContent = new Date(reserva.createdAt).toLocaleDateString('es-ES', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
+      document.getElementById('fechaCreacion').textContent = new Date(reserva.createdAt).toLocaleDateString('es-CL', { day: '2-digit', month: 'long', year: 'numeric', hour: '2-digit', minute: '2-digit' });
 
       const banner = document.getElementById('estadoBanner');
       const today = new Date().toISOString().split('T')[0];

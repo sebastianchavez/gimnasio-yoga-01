@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -162,7 +162,7 @@
       document.getElementById('userFoto').src = user.foto;
       document.getElementById('userNombre').textContent = user.nombre;
       document.getElementById('userEmail').textContent = user.email;
-      const memberSince = new Date(user.createdAt).toLocaleDateString('es-ES', { month: 'short', year: 'numeric' });
+      const memberSince = new Date(user.createdAt).toLocaleDateString('es-CL', { month: 'short', year: 'numeric' });
       document.getElementById('userMiembro').textContent = 'Miembro desde ' + memberSince;
 
       document.getElementById('perfilNombre').value = user.nombre;

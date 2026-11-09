@@ -1,5 +1,5 @@
 <!DOCTYPE html>
-<html lang="es">
+<html lang="es-CL">
 <head>
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
@@ -61,7 +61,7 @@
               <label class="metodo cursor-pointer bg-background-card border-2 border-border p-4 rounded-xl hover:border-primary">
                 <input type="radio" name="metodo" value="yape" class="hidden"/>
                 <svg class="h-7 w-7 text-gray-400 mb-2" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 18h.01M8 21h8a2 2 0 002-2V5a2 2 0 00-2-2H8a2 2 0 00-2 2v14a2 2 0 002 2z"></path></svg>
-                <p class="text-gray-300 font-semibold text-sm">Yape</p>
+                <p class="text-gray-300 font-semibold text-sm">Transferencia</p>
               </label>
               <label class="metodo cursor-pointer bg-background-card border-2 border-border p-4 rounded-xl hover:border-primary">
                 <input type="radio" name="metodo" value="transferencia" class="hidden"/>
@@ -100,13 +100,13 @@
             </div>
 
             <div id="formYape" class="form-metodo hidden bg-background-card border border-border rounded-xl p-6">
-              <h3 class="text-lg font-display font-bold text-white mb-4">Pago con Yape</h3>
+              <h3 class="text-lg font-display font-bold text-white mb-4">Pago con Transferencia</h3>
               <div class="bg-primary/10 border border-primary/30 rounded-lg p-4 mb-5 text-center">
                 <p class="text-gray-300 text-sm mb-2">Escanea el QR o yapea al número</p>
-                <p class="text-primary font-bold text-2xl">+51 987 654 321</p>
+                <p class="text-primary font-bold text-2xl">+56 9 8765 4321</p>
                 <p class="text-gray-400 text-xs mt-1">A nombre de ZenFit Studio SAC</p>
               </div>
-              <label class="block text-sm font-semibold text-gray-300 mb-2">Número de operación Yape</label>
+              <label class="block text-sm font-semibold text-gray-300 mb-2">Número de operación Transferencia</label>
               <input type="text" id="yapeOperacion" class="w-full rounded-lg px-4 py-3" placeholder="Ej: 901234567"/>
               <p class="text-gray-500 text-xs mt-2">Verifica tu código de 8-10 dígitos en la app.</p>
             </div>
@@ -114,7 +114,7 @@
             <div id="formTransferencia" class="form-metodo hidden bg-background-card border border-border rounded-xl p-6">
               <h3 class="text-lg font-display font-bold text-white mb-4">Transferencia bancaria</h3>
               <div class="bg-background-dark border border-border rounded-lg p-4 mb-5 text-sm">
-                <p class="text-gray-400 mb-1">Banco BCP · Soles</p>
+                <p class="text-gray-400 mb-1">Banco BancoEstado · Soles</p>
                 <p class="text-white font-mono">194-12345678-0-12</p>
                 <p class="text-gray-400 text-xs mt-1">CCI: 00219400123456780012</p>
               </div>
@@ -126,7 +126,7 @@
               <h3 class="text-lg font-display font-bold text-white mb-4">Pago en efectivo</h3>
               <div class="bg-primary/10 border border-primary/30 rounded-lg p-4">
                 <p class="text-white font-semibold mb-1">Paga al llegar al studio</p>
-                <p class="text-gray-300 text-sm">Reserva confirmada, paga tu clase en recepción antes de ingresar. Aceptamos billetes y monedas en soles.</p>
+                <p class="text-gray-300 text-sm">Reserva confirmada, paga tu clase en recepción antes de ingresar. Aceptamos billetes y monedas en pesos chilenos.</p>
               </div>
             </div>
 
@@ -171,7 +171,7 @@
         </div>
         <div class="border-t border-border mt-4 pt-4 space-y-2">
           <div class="flex justify-between text-sm"><span class="text-gray-400">Subtotal</span><span class="text-white">${UI.formatPrice(reserva.precio)}</span></div>
-          <div class="flex justify-between text-sm"><span class="text-gray-400">IGV incluido</span><span class="text-white">S/. 0.00</span></div>
+          <div class="flex justify-between text-sm"><span class="text-gray-400">IVA incluido</span><span class="text-white">CLP$ 0</span></div>
           <div class="flex justify-between items-center pt-3 border-t border-border">
             <span class="text-white font-semibold">Total</span>
             <span class="text-primary font-bold text-2xl">${UI.formatPrice(reserva.precio)}</span>
